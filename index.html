@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>IBD 초진 설문조사</title>
+<style>
+  body{margin:0;font-family:-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;background:#f5f7fb;color:#1f2937;}
+  .wrap{max-width:480px;margin:0 auto;padding:60px 20px;}
+  h1{font-size:22px;margin:0 0 6px;}
+  p.sub{color:#6b7280;font-size:14px;margin:0 0 32px;}
+  a.role-card{display:block;border:1px solid #e2e8f0;border-radius:12px;padding:20px;margin-bottom:12px;
+    text-decoration:none;color:inherit;background:#fff;transition:.15s;}
+  a.role-card:hover{border-color:#2563eb;background:#f8faff;}
+  a.role-card b{font-size:16px;display:block;margin-bottom:4px;}
+  a.role-card span{color:#6b7280;font-size:13px;}
+  .warn{margin-top:24px;font-size:12px;color:#dc2626;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>IBD 초진 설문조사</h1>
+  <p class="sub">염증성장질환(IBD) 클리닉 · 외래초진 문진 + 장 증상 평가</p>
+
+  <a class="role-card" id="link-patient" href="#">
+    <b>환자</b><span>초진 설문에 응답합니다</span>
+  </a>
+  <a class="role-card" id="link-doctor" href="#">
+    <b>의사</b><span>제출된 설문 결과를 확인합니다</span>
+  </a>
+
+  <p class="warn" id="warn" style="display:none">
+    ⚠ GAS_WEB_APP_URL 이 아직 설정되지 않았습니다. 이 파일 하단의 GAS_WEB_APP_URL 값을
+    Apps Script 배포 URL로 교체해주세요.
+  </p>
+</div>
+
+<script>
+  // Google Apps Script 웹 앱 배포 후 발급되는 URL로 교체하세요.
+  // 예: https://script.google.com/macros/s/AKfycb.../exec
+  var GAS_WEB_APP_URL = 'PASTE_YOUR_DEPLOYMENT_URL_HERE';
+
+  if (!GAS_WEB_APP_URL || GAS_WEB_APP_URL.indexOf('PASTE_YOUR') === 0) {
+    document.getElementById('warn').style.display = 'block';
+  } else {
+    document.getElementById('link-patient').href = GAS_WEB_APP_URL + '?role=patient';
+    document.getElementById('link-doctor').href = GAS_WEB_APP_URL + '?role=doctor';
+  }
+</script>
+</body>
+</html>
